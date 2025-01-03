@@ -34,6 +34,71 @@ public class Main {
             }
         }
 
-        return selectedAlgorithm;
+        return selectedAlgorithm - 1;
     }
+
+    public static int promptAmountOfProcesses() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter number of processes (int): ");
+        int numberOfProcesses;
+
+        if (scanner.hasNextInt()) {
+            numberOfProcesses = scanner.nextInt();
+        } else {
+            scanner.next();
+            numberOfProcesses = -1;
+        }
+
+        while (numberOfProcesses <= 0) {
+            System.out.print("Invalid, Enter number of processes (integer/number/e.g. 4): ");
+            if (scanner.hasNextInt()) {
+                numberOfProcesses = scanner.nextInt();
+            } else {
+                scanner.next();
+                numberOfProcesses = -1;
+            }
+        }
+
+        return numberOfProcesses;
+    }
+
+    public static void readInputDataFromUser() {
+        ArrayList<Integer> arrivalTimes = new ArrayList<Integer>();
+        ArrayList<Integer> burtTimes = new ArrayList<Integer>();
+
+        int totalProcesses = promptAmountOfProcesses();
+
+        promptInputDataFromUser(arrivalTimes, totalProcesses, "arrival");
+        promptInputDataFromUser(burtTimes, totalProcesses, "brust");
+    }
+
+    public static void promptInputDataFromUser(ArrayList<Integer> array, int totalProcesses, String timeType) {
+        Scanner scanner = new Scanner(System.in);
+        int positiveValue = -1;
+
+        for (int eachProcess = 0; eachProcess < totalProcesses; eachProcess++) {
+            System.out.println("Process number #" + (eachProcess + 1));
+            System.out.print("Enter " + timeType.toUpperCase() + " time: ");
+            if (scanner.hasNextInt()) {
+                positiveValue = scanner.nextInt();
+            } else {
+                scanner.next();
+                positiveValue = -1;
+            }
+
+            while (positiveValue < 0) {
+                System.out.print("Invalid, Enter arrival time of processes #" + (eachProcess + 1) + " (integer/number/e.g. 4): ");
+                if (scanner.hasNextInt()) {
+                    positiveValue = scanner.nextInt();
+                } else {
+                    scanner.next();
+                    positiveValue = -1;
+                }
+            }
+
+            array.add(positiveValue);
+        }
+
+    }
+
 }
