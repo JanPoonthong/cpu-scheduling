@@ -14,7 +14,7 @@ class MainTest {
         String simulatedInput = "ab\n2\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
-        int result = Main.readInput();
+        int result = Main.readAlgorithmSelection();
         assertEquals(2, result);
     }
 
@@ -23,7 +23,7 @@ class MainTest {
         String simulatedInput = "3\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
-        int result = Main.readInput();
+        int result = Main.readAlgorithmSelection();
         assertEquals(3, result);
     }
 
@@ -32,7 +32,7 @@ class MainTest {
         String simulatedInput = "5\n1\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
-        int result = Main.readInput();
+        int result = Main.readAlgorithmSelection();
         assertEquals(1, result);
     }
 
@@ -41,7 +41,7 @@ class MainTest {
         String simulatedInput = "askdj\naskjd\n4\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
-        int result = Main.readInput();
+        int result = Main.readAlgorithmSelection();
         assertEquals(4, result);
     }
 }

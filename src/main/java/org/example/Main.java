@@ -12,7 +12,7 @@ public class Main {
      *
      * @return the selected algorithm by user
      */
-    public static int readInput() {
+    public static int readAlgorithmSelection() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Pick an algorithm (int): ");
         int selectedAlgorithm;
