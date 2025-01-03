@@ -69,7 +69,7 @@ public class Main {
         int totalProcesses = promptAmountOfProcesses();
 
         promptInputDataFromUser(arrivalTimes, totalProcesses, "arrival");
-        promptInputDataFromUser(burtTimes, totalProcesses, "brust");
+        promptInputDataFromUser(burtTimes, totalProcesses, "burst");
     }
 
     public static void promptInputDataFromUser(ArrayList<Integer> array, int totalProcesses, String timeType) {
