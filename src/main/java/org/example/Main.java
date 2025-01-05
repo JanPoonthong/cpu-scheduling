@@ -1,10 +1,20 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int selectedAlgorithm = readInput();
+        int selectedAlgorithm = readAlgorithmSelection();
+
+        String[] algorithms = {"FCFS", "SJF", "PP", "RR"};
+        if (selectedAlgorithm == 0) {
+            // First Come, First Served
+            FirstComeFirstServed firstComeFirstServed = new FirstComeFirstServed();
+        } else if (selectedAlgorithm == 1) {
+            // Round Robin
+            RoundRobin roundRobin = new RoundRobin();
+        }
     }
 
     /**
