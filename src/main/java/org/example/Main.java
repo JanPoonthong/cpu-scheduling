@@ -1,19 +1,23 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int selectedAlgorithm = readAlgorithmSelection();
+        List<Integer> arrivalTimes = new ArrayList<>();
+        List<Integer> burtTimes = new ArrayList<>();
 
-        String[] algorithms = {"FCFS", "SJF", "PP", "RR"};
+        int selectedAlgorithm = readAlgorithmSelection() - 1;
+        readInputDataFromUser(arrivalTimes, burtTimes);
+
         if (selectedAlgorithm == 0) {
-            // First Come, First Served
-            FirstComeFirstServed firstComeFirstServed = new FirstComeFirstServed();
+            FirstComeFirstServed firstComeFirstServed = new FirstComeFirstServed(arrivalTimes, burtTimes);
+            System.out.println(firstComeFirstServed.computation());
         } else if (selectedAlgorithm == 1) {
-            // Round Robin
-            RoundRobin roundRobin = new RoundRobin();
+            RoundRobin roundRobin = new RoundRobin(arrivalTimes, burtTimes);
+            System.out.println(roundRobin.computation());
         }
     }
 
@@ -34,7 +38,7 @@ public class Main {
             selectedAlgorithm = -1;
         }
 
-        while (selectedAlgorithm < 1 || selectedAlgorithm > 4) {
+        while (selectedAlgorithm < 1 || selectedAlgorithm > 2) {
             System.out.print("Invalid selection of an algorithm, please pick integer from 1 to 4: ");
             if (scanner.hasNextInt()) {
                 selectedAlgorithm = scanner.nextInt();
@@ -44,7 +48,7 @@ public class Main {
             }
         }
 
-        return selectedAlgorithm - 1;
+        return selectedAlgorithm;
     }
 
     public static int promptAmountOfProcesses() {
@@ -72,9 +76,7 @@ public class Main {
         return numberOfProcesses;
     }
 
-    public static void readInputDataFromUser() {
-        ArrayList<Integer> arrivalTimes = new ArrayList<Integer>();
-        ArrayList<Integer> burtTimes = new ArrayList<Integer>();
+    public static void readInputDataFromUser(List<Integer> arrivalTimes, List<Integer> burtTimes) {
 
         int totalProcesses = promptAmountOfProcesses();
 
@@ -82,7 +84,7 @@ public class Main {
         promptComputationDataFromUser(burtTimes, totalProcesses, "burst");
     }
 
-    public static void promptComputationDataFromUser(ArrayList<Integer> array, int totalProcesses, String timeType) {
+    public static void promptComputationDataFromUser(List<Integer> array, int totalProcesses, String timeType) {
         Scanner scanner = new Scanner(System.in);
         int positiveValue = -1;
 
@@ -108,7 +110,6 @@ public class Main {
 
             array.add(positiveValue);
         }
-
     }
 
 }

@@ -20,11 +20,11 @@ class MainTest {
 
     @Test
     void testValidInput() {
-        String simulatedInput = "3\n";
+        String simulatedInput = "2\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
         int result = Main.readAlgorithmSelection();
-        assertEquals(3, result);
+        assertEquals(2, result);
     }
 
     @Test
@@ -38,10 +38,10 @@ class MainTest {
 
     @Test
     void testMultipleInvalidInputsBeforeValidInput() {
-        String simulatedInput = "askdj\naskjd\n4\n";
+        String simulatedInput = "askdj\naskjd\n1\n";
         InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(inputStream);
         int result = Main.readAlgorithmSelection();
-        assertEquals(4, result);
+        assertEquals(1, result);
     }
 }
