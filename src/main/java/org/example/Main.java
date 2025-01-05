@@ -78,11 +78,11 @@ public class Main {
 
         int totalProcesses = promptAmountOfProcesses();
 
-        promptInputDataFromUser(arrivalTimes, totalProcesses, "arrival");
-        promptInputDataFromUser(burtTimes, totalProcesses, "burst");
+        promptComputationDataFromUser(arrivalTimes, totalProcesses, "arrival");
+        promptComputationDataFromUser(burtTimes, totalProcesses, "burst");
     }
 
-    public static void promptInputDataFromUser(ArrayList<Integer> array, int totalProcesses, String timeType) {
+    public static void promptComputationDataFromUser(ArrayList<Integer> array, int totalProcesses, String timeType) {
         Scanner scanner = new Scanner(System.in);
         int positiveValue = -1;
 
