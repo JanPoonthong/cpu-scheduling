@@ -14,9 +14,12 @@ public class Main {
 
         if (selectedAlgorithm == 0) {
             FirstComeFirstServed firstComeFirstServed = new FirstComeFirstServed(arrivalTimes, burtTimes);
-            System.out.println(firstComeFirstServed.computation());
+            System.out.println("Average time: " + firstComeFirstServed.computation() + "ms");
         } else if (selectedAlgorithm == 1) {
-            RoundRobin roundRobin = new RoundRobin(arrivalTimes, burtTimes);
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Pick an quantum (int): ");
+            int quantum = scanner.nextInt();
+            RoundRobin roundRobin = new RoundRobin(arrivalTimes, burtTimes, quantum);
             System.out.println(roundRobin.computation());
         }
     }
@@ -39,7 +42,7 @@ public class Main {
         }
 
         while (selectedAlgorithm < 1 || selectedAlgorithm > 2) {
-            System.out.print("Invalid selection of an algorithm, please pick integer from 1 to 4: ");
+            System.out.print("Invalid selection of an algorithm, please pick integer from 1 to 2: ");
             if (scanner.hasNextInt()) {
                 selectedAlgorithm = scanner.nextInt();
             } else {
